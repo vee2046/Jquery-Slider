@@ -30,7 +30,7 @@
     that.$drager.on('mousedown touchstart', function(e) {
       e.preventDefault();
       that.isMove = true;
-      that.position = parseInt(that.$drager.css('left').replace('px', ''), 10) - e.pageX || e.originalEvent.touches[0].pageX;
+      that.position = parseInt(that.$drager.css('left').replace('px', ''), 10) - e.pageX || (e.originalEvent.touches&&e.originalEvent.touches[0].pageX);
     })
     
     that.$body.on('mousemove touchmove', function(e) {
