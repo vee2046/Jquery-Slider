@@ -30,12 +30,13 @@
     that.$drager.on('mousedown touchstart', function(e) {
       e.preventDefault();
       that.isMove = true;
-      that.position = parseInt(that.$drager.css('left').replace('px', ''), 10) - e.pageX || (e.originalEvent.touches&&e.originalEvent.touches[0].pageX);
+      that.position = parseInt(that.$drager.css('left').replace('px', ''), 10) - (e.pageX || (e.originalEvent.touches&&e.originalEvent.touches[0].pageX));
     })
     
     that.$body.on('mousemove touchmove', function(e) {
       if(that.isMove == false) return;
-      that.slideTo({x: that.position + e.pageX || e.originalEvent.touches[0].pageX, callBack: that.callBack});
+      var x = e.pageX || (e.originalEvent.touches&&e.originalEvent.touches[0].pageX);
+      that.slideTo({x: that.position + x, callBack: that.callBack});
     })
 
     // 解除绑定拖动事件
@@ -61,7 +62,7 @@
       this.$drager.stop().animate({'left' : _x}, _speed); //移动节点
 
       if(_callBack){
-        _callBack(this.formula(_x, this.maxPosition))
+        _callBack(this.formula(_x, this.maxPosition), this)
       }
     }
   }

@@ -62,8 +62,9 @@
             var per = Math.floor(curLength/length*100)
             return per;
           },
-          callBack: function(v){
+          callBack: function(v,me){
             // console.log('v='+v);
+            me.$element.attr('per',v);
           }
         })
       });
