@@ -42,8 +42,8 @@
 
     // 解除绑定拖动事件
     that.$body.on('mouseup mouseleave touchend', function(){
+      if(that.isMove) that.complete && that.complete();
       that.isMove = false;
-      that.complete && that.complete();
     });
   }
   
