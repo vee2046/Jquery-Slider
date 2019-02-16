@@ -65,6 +65,9 @@
           callBack: function(v,me){
             // console.log('v='+v);
             me.$element.attr('per',v);
+          },
+          complete:function(){
+            console.log('拖拽结束');
           }
         })
       });

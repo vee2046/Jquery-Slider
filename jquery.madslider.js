@@ -16,7 +16,8 @@
     this.position = 0;
     this.minPosition = 0;
     this.maxPosition = this.$element.width();
-    this.callBack = params.callBack
+    this.callBack = params.callBack;
+    this.complete = params.complete;
     this.formula = params.formula || function(i,j){var _number =  Math.ceil(i/(j/10)); return _number > 10 ? 10 : _number}
     this.isMove = false;
   }
@@ -42,6 +43,7 @@
     // 解除绑定拖动事件
     that.$body.on('mouseup mouseleave touchend', function(){
       that.isMove = false;
+      that.complete && that.complete();
     });
   }
   

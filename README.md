@@ -1,20 +1,25 @@
 # JQuery Slider Plugin
 
 ## Use
-    $('.j-high-slider').madSlider({
-          formula: function(curLength,length){
-            // 百分比进度
-            var per = Math.floor(curLength/length*100)
-            return per;
-          },
-          callBack: function(v,me){
-            console.log('v='+v);
-          }
-        })
+$('.j-high-slider').madSlider({
+  formula: function(curLength,length){
+    // 百分比进度
+    var per = Math.floor(curLength/length*100)
+    return per;
+  },
+  callBack: function(v,me){
+    // console.log('v='+v);
+    me.$element.attr('per',v);
+  },
+  complete:function(){
+    console.log('拖拽结束');
+  }
+})
 ## Options
 
     formula: 返回值的计算公式，curLength 当前拖拽长度，length 总长度；
     callBack: 拖拽回调，v是 formula 返回值,me是实例对象
+    complete: 拖拽结束回调，无参数
 
 ## 交互对象属性值
 - bar
